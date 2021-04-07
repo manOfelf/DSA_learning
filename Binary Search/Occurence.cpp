@@ -1,3 +1,6 @@
+// T.C : O(logn)
+// S.C : O(1)
+
 #include <bits/stdc++.h>
 using namespace std;
 
