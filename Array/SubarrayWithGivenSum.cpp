@@ -51,11 +51,11 @@ void subArr(vec arr, int sum)
 {
 	int tem_sum = arr[0], l = 0;
 
-	for (int i = 1; i < arr.size() - 1; i++)
+	for (int i = 1; i <= arr.size() ; i++)
 	{
 		while (tem_sum > sum && l < i - 1)
 		{
-			tem_sum = tem_sum - arr[i];
+			tem_sum = tem_sum - arr[l];
 			l++;
 		}
 
