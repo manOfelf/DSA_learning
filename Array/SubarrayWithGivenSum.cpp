@@ -73,9 +73,12 @@ void subArr(vec arr, int sum)
 
 int main()
 {
+	// T.C : O(n)
 	// SubArray by Sliding window technique
 	//	subArr({2, 3, 4, 5, 6, 7}, 9);
 
+	
+	// T.C : O(nlogn)
 	// SubArray by PrefixSum
 	subArray({2, 3, 4, 5, 6, 7}, 9);
 
