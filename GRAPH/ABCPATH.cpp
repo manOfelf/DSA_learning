@@ -6,6 +6,7 @@ int dy[] = { -1, 0, 1, 1, 1, 0, -1, -1};
 
 int ABCPath(char** grid, int n, int m, char startVertex, queue<pair<pair<int, int>, pair<int, char>>> A) {
 
+	// created visited array for marking the location already visited
 bool **vis = new bool *[n];
 	for (int i = 0; i < n; i++)
 	{
