@@ -4,40 +4,42 @@ using namespace std;
 int dx[] = { -1, -1, -1, 0, 1, 1, 1, 0};
 int dy[] = { -1, 0, 1, 1, 1, 0, -1, -1};
 
-int Path(char** grid, int n, int m, char startVertex, queue<pair<pair<int, int>, pair<int, char>>> A) {
+int ABCPath(char** grid, int n, int m, char startVertex, queue<pair<pair<int, int>, pair<int, char>>> A) {
 
-	bool** vis = new bool*[n];
+bool **vis = new bool *[n];
 	for (int i = 0; i < n; i++)
 	{
 		vis[i] = new bool[m];
 		for (int j = 0; j < m; j++)
 			vis[i][j] = 0;
 	}
-	int mx = -10000;
-	while (!A.empty()) {
+	int max_path = -10000;
+	while (!A.empty())
+	{
 		pair<pair<int, int>, pair<int, char>> v;
 		v = A.front();
 		int x = v.first.first, y = v.first.second;
-		int d = v.second.first; char c = v.second.second;
+		int d = v.second.first;
+		char c = v.second.second;
 
-		mx = max(mx, d);
+		max_path = max(max_path, d);
 		A.pop();
 		vis[x][y] = 1;
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 8; i++)
+		{
 			int current_x = x + dx[i];
 			int current_y = y + dy[i];
 
 			if (current_x < n && current_y < m && current_x >= 0 && current_y >= 0 && grid[current_x][current_y] == c + 1)
 			{
-				if (!vis[current_x][current_y]) {
+				if (!vis[current_x][current_y])
+				{
 					A.push({{current_x, current_y}, {d + 1, c + 1}});
 				}
 			}
 		}
-
-
 	}
-	return mx;
+	return max_path;
 }
 int main() {
 	int n, m;
@@ -61,6 +63,6 @@ int main() {
 	}
 
 
-	cout << Path(grid, n, m, 'A', A)<< endl;
+	cout << ABCPath(grid, n, m, 'A', A)<< endl;
   // 4
 }
