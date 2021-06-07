@@ -1,13 +1,13 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int dx[] = { -1, -1, -1, 0, 1, 1, 1, 0};
-int dy[] = { -1, 0, 1, 1, 1, 0, -1, -1};
+int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+int dy[] = {-1, 0, 1, 1, 1, 0, -1, -1};
 
-int ABCPath(char** grid, int n, int m, char startVertex, queue<pair<pair<int, int>, pair<int, char>>> A) {
+int ABCPath(char **grid, int n, int m, queue<pair<pair<int, int>, pair<int, char>>> A)
+{
 
-	// created visited array for marking the location already visited
-bool **vis = new bool *[n];
+	bool **vis = new bool *[n];
 	for (int i = 0; i < n; i++)
 	{
 		vis[i] = new bool[m];
@@ -19,12 +19,13 @@ bool **vis = new bool *[n];
 	{
 		pair<pair<int, int>, pair<int, char>> v;
 		v = A.front();
+		A.pop();
 		int x = v.first.first, y = v.first.second;
 		int d = v.second.first;
 		char c = v.second.second;
 
 		max_path = max(max_path, d);
-		A.pop();
+
 		vis[x][y] = 1;
 		for (int i = 0; i < 8; i++)
 		{
@@ -42,28 +43,29 @@ bool **vis = new bool *[n];
 	}
 	return max_path;
 }
-int main() {
+int main()
+{
 	int n, m;
 	cin >> n >> m; // n = 4, m = 3
-  
-//     n = 4, m = 3
-//     A B E
-//     C F G 
-//     B D H
-//     A B C
+
+	//     A B E
+	//     C F G
+	//     B D H
+	//     A B C
 
 	queue<pair<pair<int, int>, pair<int, char>>> A;
-	char** grid = new char*[n];
-	for (int i = 0; i < n; i++) {
+	char **grid = new char *[n];
+	for (int i = 0; i < n; i++)
+	{
 		grid[i] = new char[m];
-		for (int j = 0; j < m; j++) {
+		for (int j = 0; j < m; j++)
+		{
 			cin >> grid[i][j];
 			if (grid[i][j] == 'A')
 				A.push({{i, j}, {1, 'A'}});
 		}
 	}
 
-
-	cout << ABCPath(grid, n, m, 'A', A)<< endl;
-  // 4
+	cout << ABCPath(grid, n, m, A) << endl;
+	// 4
 }
