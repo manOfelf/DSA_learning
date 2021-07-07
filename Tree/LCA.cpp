@@ -12,37 +12,25 @@ struct Node {
     }
 };
 
-bool getPath(Node *root, int key, vector<int> &path){
-    if(root == NULL)
-    return false;
 
-    path.push_back(root->data);  // for checking ultimately that root data equals to key or not
-    if(root->data==key){
-        return true;
-    }
-                                 // if root data not equals to key, then check left subtree and right subtree      
-    if(getPath(root->left, key, path) || getPath(root->right,key,path)){ 
-        return true;
-    }
-    path.pop_back();
-    return false;
+Node* LCA(Node* root, int n1, int n2){
+   if(!root)
+   return NULL;
 
-}
+   if(root->data == n1  ||  root->data==n2)
+   return root;
 
+    Node* left = LCA(root->left,n1,n2);
+    Node* right = LCA(root->right,n1,n2);
+    if(left && right)
+    return root;
+    if(left)
+    return left;
+    if(right)
+    return right;
 
-int LCA(Node* root, int n1, int n2){
-    vector<int> path1,path2;
-                                 //  checking path from root to node exists or not
-    if(!getPath(root, n1, path1) || !getPath(root, n2, path2)){  
-        return -1;
-    }
-    int pathchange;
-    for(pathchange = 0;pathchange<min(path1.size(), path2.size());pathchange++){
-        if(path1[pathchange] != path2[pathchange]){
-            break;
-        }
-    }
-    return path1[pathchange-1];
+    return NULL;
+
 }
 
 int main(){
@@ -57,20 +45,21 @@ int main(){
 */
     Node *root = new Node(1);
     root->left = new Node(2);
-    root->right = new Node(3);
+    root->right = new Node(8);
     root->left->left = new Node(4);
     root->right->left = new Node(5);
     root->right->right = new Node(6);
     root->right->left->left = new Node(7);
 
-    int n1=7;
-    int n2=6;
-    int lca=LCA(root, n1, n2);
-    if(lca==-1)
-    cout<<"LCA not exist.\n";
-    else{
-        cout<<lca<<endl;
-    }
+    int n1=1;
+    int n2=3;
+    
+    
+    Node* lca = LCA(root, n1, n2);
+    if (lca != NULL)
+       cout << lca->data<<endl;
+    else
+       cout << "Nodes are not present \n";
 
 
 }
