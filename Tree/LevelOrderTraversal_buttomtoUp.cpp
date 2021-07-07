@@ -64,5 +64,6 @@ int main()
         int temp = vec.top();
         vec.pop();
         cout << temp << " ";
+        //  4 5 6 7 2 3 1
     }
 }
