@@ -1,14 +1,3 @@
-Given array of N positive no., also given a no. X.
-Task is to find pair(i,j) such that:
-* i<j
-* A[i] = A[j]
-* i*j is divisible by X.
-Note: 1 based indexing is taken.
-
-INPUT: A[]= {2,2,2}   X=2
-OUTPUT: 2
-
-
 // Given array of N positive no., also given a no. X.
 // Task is to find pair(i,j) such that:
 // * i<j
