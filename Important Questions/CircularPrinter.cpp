@@ -20,13 +20,11 @@ int Circular_Printer (string str)
   return time;
 }
 
-int
-main ()
+int main()
 {
   int T;
   cin >> T;
-  while (T--)
-    {
+  while (T--){
       string str;
       cin >> str;
       cout << Circular_Printer(str) << " ";
