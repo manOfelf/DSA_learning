@@ -11,8 +11,8 @@ int Circular_Printer (string str)
     {
       int next_idx = str[i] - 96;
 
-      time +=min (abs (next_idx - current_idx),
-	                min ((26 - next_idx + current_idx), (26 - current_idx + next_idx)));
+      time +=min(abs (next_idx - current_idx),
+	                min((26 - next_idx + current_idx), (26 - current_idx + next_idx)));
     
       current_idx = str[i] - 96;
     }
@@ -29,7 +29,7 @@ main ()
     {
       string str;
       cin >> str;
-      cout << Circular_Printer (str) << " ";
+      cout << Circular_Printer(str) << " ";
     }
 
 
