@@ -15,11 +15,9 @@ struct Node
 };
 void Path_Sum(Node *root, int &mxsum, int &sum)
 {
-    if (root == NULL)
-        return;
+    if (root == NULL)   return;
     sum += root->data;
-    if (!root->left && !root->right)
-    {
+    if (!root->left && !root->right){
         mxsum = max(sum, mxsum);
     }
     Path_Sum(root->left, mxsum, sum);
@@ -29,8 +27,8 @@ void Path_Sum(Node *root, int &mxsum, int &sum)
 int Path(Node *root)
 {
     int mxsum = -100000;
-    if (!root)
-        return mxsum;
+    if (!root)  return mxsum;
+    
     int sum = 0;
     Path_Sum(root, mxsum, sum);
 
