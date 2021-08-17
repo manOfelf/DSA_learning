@@ -5,7 +5,7 @@ double findMedian(vector<int> &arr1, vector<int> &arr2)
 {
     int n1 = arr1.size();
     int n2 = arr2.size();
-    if (n1 < n2)
+    if (n1 > n2)
         return findMedian(arr2, arr1);
 
     int l = 0, r = n1;
@@ -29,7 +29,7 @@ double findMedian(vector<int> &arr1, vector<int> &arr2)
             r1 = INT_MAX;
         else
             r1 = arr1[part1];
-        if (part2 == n1)
+        if (part2 == n2)
             r2 = INT_MAX;
         else
             r2 = arr2[part2];
@@ -60,8 +60,10 @@ double findMedian(vector<int> &arr1, vector<int> &arr2)
 
 int main()
 {
-    vector<int> arr1 = {1, 2, 3};
-    vector<int> arr2 = {4, 5, 6, 7};
+    vector<int> arr1 = {1, 3, 5, 7, 10};
+    vector<int> arr2 = {2, 3, 6, 15};
+    cout << endl
+         << endl;
     cout << findMedian(arr1, arr1) << endl;
 
     return 0;
